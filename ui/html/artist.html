@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../style/artist.css">
+        <link rel="stylesheet" href="../style/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+        <link rel="apple-touch-icon" sizes="180x180" href="../style/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../style/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../style/img/favicon-16x16.png">
+        <link rel="manifest" href="../style/img/site.webmanifest">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <title>Artist</title>
+    </head>
+    <body>
+        <header class="font-effect-shadow-multiple">
+            <h1 class="font-effect-shadow-multiple">Groupie-tracker</h1>
+        </header>
+        <div class="container-fluid foot">
+            <a href="../" class="font-effect-fire">HomePage</a>
+        </div>
+        <div class="container-fluid  perscard">
+            <div class="container  information">
+                <div class="image font-effect-neon">
+                    <img src="{{.Image}}" alt="">
+                    <h1>{{.Name}}</h1>
+                </div>
+                <div class="text row ">
+                    <div class="content font-effect-neon col-6">
+                        <h3>Creation date: {{.CreationDate}}</h3>
+                        
+                        <h3>Members:{{range .Members}} {{.}}, {{end}}</h3>
+                        
+                        <h3>First Album: {{.FirstAlbum}}</h3>
+                    </div>
+                    <div class="locations font-effect-neon col-6">
+                        <ul>
+                        {{range $key, $value := .Relations.DatesLocations}}
+                            <li>
+                                {{$key}}
+                                <ul>
+                                    {{range $val := $value}}
+                                    <li>{{$val}}</li>
+                                    {{end}}
+                                </ul>
+                            </li>
+                        
+                        {{end}}
+                        </ul>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    </body>
+</html>

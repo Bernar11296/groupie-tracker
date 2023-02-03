@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../style/style.css">
+        <link rel="icon" type="image/png" href="../ui/img/logo-04.png">
+        <link rel="stylesheet" href="../style/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+        <link rel="apple-touch-icon" sizes="180x180" href="../style/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../style/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../style/img/favicon-16x16.png">
+        <link rel="manifest" href="../style/img/site.webmanifest">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <title>Groupie-tracker</title>
+    </head>
+    <body>
+        <header class="container-fluid font-effect-emboss">
+            <h1 >Groupie-tracker</h1>
+        </header>
+
+
+        <form class="container search-box" action="/search">
+            <input type="text" class="input-search  font-effect-fire" placeholder="Type to Search..." name="search" required list="search">
+            
+            <button class="btn-search font-effect-fire" type="submit">Search</button>
+            <datalist id="search">
+                {{range .}}
+                <option value="{{.Name}}">{{.Name}} - Artist/Band</option>
+                {{end}}
+                {{range .}}
+                <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
+                {{end}}
+                {{range .}}
+                    {{range .Members}}
+                        <option value="{{.}}">{{.}} - Member</option>
+                    {{end}}
+                {{end}}
+                {{range .}}
+                <option value="{{.FirstAlbum}}">{{.FirstAlbum}} - First Album</option>
+                {{end}}
+            </datalist>
+        </form>
+
+
+        <div class="container-fluid mpg">
+            
+            <div class="card-deck mt-4 row ">
+                {{range  .}}
+                <div class="col-md-12 col-lg-6 col-xl-4 col-xxl-3 d-flex mb-4 align-items-stretch card page">
+                    <div class="card cards">
+                        <a class="cards-link" href="/artist/?id={{.Id}}">
+                            <div class="cards-image">
+                                <img src="{{.Image}}" alt="image">
+                            </div>
+                            <div class="cards-info">
+                                <div class="cards-name font-effect-fire">
+                                    <h2>{{.Name}}</h2>
+                                </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {{end}}
+            </div>    
+        </div>
+    </body>
+</html>
